@@ -24,8 +24,8 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $no = 1; ?>
                         @foreach ($program as $program)
-                            <?php $no = 1; ?>
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $program->name }}</td>
@@ -33,7 +33,7 @@
                                 <td>{{ $program->time }}</td>
                                 <td>{{ $program->place }}</td>
                                 <td>{{ $program->speaker }}</td>
-                                <td>{{ $program->poster }}</td>
+                                <td><img src="{{ asset('images/' . $program->poster) }}" height="50" width="50"></td>
                                 <td>
                                     <a href="{{ route('program.edit', $program->id) }}" class="btn btn-warning btn-sm"><i
                                             class="fas fa-edit"></i></a>

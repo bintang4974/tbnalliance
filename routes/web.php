@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\TicketController;
@@ -23,6 +24,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/program', ProgramController::class);
-Route::resource('/ticket', TicketController::class);
-Route::resource('/participant', ParticipantController::class);
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/program', ProgramController::class);
+    Route::resource('/ticket', TicketController::class);
+    Route::resource('/participant', ParticipantController::class);
+});

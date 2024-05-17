@@ -77,6 +77,12 @@
                     <span>Participant</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('regispart.index') }}">
+                    <i class="fas fa-cash-register"></i>
+                    <span>Regis</span></a>
+            </li>
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"

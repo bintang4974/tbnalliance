@@ -20,4 +20,9 @@ class Participant extends Model
     {
         return $this->belongsTo(Experience::class);
     }
+
+    public function regispart()
+    {
+        return $this->belongsTo(Regispart::class);
+    }
 }

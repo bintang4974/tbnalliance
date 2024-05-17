@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Program extends Model
+class Regispart extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function tickets()
+    public function program()
     {
-        return $this->hasMany(Ticket::class);
+        return $this->belongsTo(Program::class);
     }
 
-    public function regisparts()
+    public function participants()
     {
-        return $this->hasMany(Regispart::class);
+        return $this->hasMany(Participant::class);
     }
 }

@@ -9,6 +9,8 @@ class Experience extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function participant()
     {
         return $this->belongsTo(Participant::class);

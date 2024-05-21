@@ -83,6 +83,12 @@
                     <span>Regis</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('experience.index') }}">
+                    <i class="fas fa-photo-video"></i>
+                    <span>Experience</span></a>
+            </li>
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"

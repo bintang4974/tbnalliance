@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RegispartController;
@@ -32,4 +33,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/ticket', TicketController::class);
     Route::resource('/participant', ParticipantController::class);
     Route::resource('/regispart', RegispartController::class);
+    Route::resource('/experience', ExperienceController::class);
 });

@@ -27,7 +27,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Create Category";
+
+        return view('category.create', compact('title'));
     }
 
     /**
@@ -38,7 +40,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        Category::create([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('category.index')->with('success', 'Speaker berhasil ditambahkan.');
     }
 
     /**
@@ -60,7 +70,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = "Edit Category";
+        $category = Category::find($id);
+
+        return view('category.edit', compact('title', 'category'));
     }
 
     /**
@@ -72,7 +85,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $category = Category::find($id);
+
+        $category->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('category.index')->with('success', 'Speaker berhasil diperbarui.');
     }
 
     /**
@@ -83,6 +106,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::find($id)->delete();
+
+        return redirect()->route('category.index')->with('success', 'program berhasil dihapus.');
     }
 }

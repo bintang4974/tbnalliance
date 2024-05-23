@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExperienceController;
@@ -36,4 +37,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/regispart', RegispartController::class);
     Route::resource('/experience', ExperienceController::class);
     Route::resource('/category', CategoryController::class);
+    Route::resource('/blog', BlogController::class);
 });

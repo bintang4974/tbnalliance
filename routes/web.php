@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RegispartController;
@@ -38,4 +39,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/experience', ExperienceController::class);
     Route::resource('/category', CategoryController::class);
     Route::resource('/blog', BlogController::class);
+    Route::resource('/page', PageController::class);
 });

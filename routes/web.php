@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChooseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\PageController;
@@ -40,4 +41,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/category', CategoryController::class);
     Route::resource('/blog', BlogController::class);
     Route::resource('/page', PageController::class);
+    Route::get('page/{pageId}/upload', [ChooseController::class, 'index']);
+    Route::post('page/{pageId}/upload', [ChooseController::class, 'store']);
+    Route::get('choose-image/{chooseImageId}/delete', [ChooseController::class, 'destroy']);
 });

@@ -18,6 +18,7 @@
                             <th>Desc</th>
                             <th>About</th>
                             <th>Mission</th>
+                            <th>Choose</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -30,6 +31,8 @@
                                 <td>{{ $page->desc }}</td>
                                 <td>{{ $page->about }}</td>
                                 <td>{{ $page->mission }}</td>
+                                <td><a href="{{ url('page/'.$page->id.'/upload') }}" class="btn btn-primary btn-sm"><i class="fas fa-images"></i> Add</a></td>
+                                {{-- <td><a href="{{ route('page.upload', $page->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-images"></i> Add</a></td> --}}
                                 <td>
                                     <a href="{{ route('page.edit', $page->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                     <form action="{{ route('page.destroy', $page->id) }}" method="POST" class="d-inline">

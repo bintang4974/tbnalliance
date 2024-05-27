@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label>Time</label>
-                        <input type="text" name="time" class="form-control" value="{{ $program->time }}">
+                        <input type="date" name="time" class="form-control" value="{{ $program->time }}">
                         @error('time')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror

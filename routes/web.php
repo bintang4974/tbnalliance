@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ParticipantController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RegispartController;
 use App\Http\Controllers\TicketController;
@@ -44,4 +45,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('page/{pageId}/upload', [ChooseController::class, 'index']);
     Route::post('page/{pageId}/upload', [ChooseController::class, 'store']);
     Route::get('choose-image/{chooseImageId}/delete', [ChooseController::class, 'destroy']);
+    Route::get('page/{pageId}/partner', [PartnerController::class, 'index']);
+    Route::post('page/{pageId}/partner', [PartnerController::class, 'store']);
+    Route::get('partner-image/{partnerImageId}/delete', [PartnerController::class, 'destroy']);
 });

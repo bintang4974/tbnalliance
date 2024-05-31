@@ -41,6 +41,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/category', CategoryController::class);
     Route::resource('/blog', BlogController::class);
     Route::resource('/page', PageController::class);
+    Route::get('blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+
     Route::get('page/{pageId}/upload', [ChooseController::class, 'index']);
     Route::post('page/{pageId}/upload', [ChooseController::class, 'store']);
     Route::get('choose-image/{chooseImageId}/delete', [ChooseController::class, 'destroy']);

@@ -21,6 +21,12 @@ class CreateProgramsTable extends Migration
             $table->string('place');
             $table->string('speaker');
             $table->string('poster');
+            $table->string('position');
+            $table->string('transport');
+            $table->string('hotel_name');
+            $table->string('ticket_type');
+            $table->string('price');
+            $table->string('photo_speaker');
             $table->timestamps();
         });
     }

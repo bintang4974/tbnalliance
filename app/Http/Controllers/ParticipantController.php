@@ -44,7 +44,7 @@ class ParticipantController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:participant,email',
+            'email' => 'required|email',
             'telp' => 'required|numeric',
             'notes' => 'required',
             'afiliate' => 'required',

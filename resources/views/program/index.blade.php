@@ -20,6 +20,11 @@
                             <th>Place</th>
                             <th>Speaker</th>
                             <th>Poster</th>
+                            <th>Position</th>
+                            <th>Hotel Name</th>
+                            <th>Ticket Type</th>
+                            <th>Price</th>
+                            <th>Photo Speaker</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,6 +39,11 @@
                                 <td>{{ $program->place }}</td>
                                 <td>{{ $program->speaker }}</td>
                                 <td><img src="{{ asset('images/' . $program->poster) }}" height="50" width="50"></td>
+                                <td>{{ $program->position }}</td>
+                                <td>{{ $program->hotel_name }}</td>
+                                <td>{{ $program->ticket_type }}</td>
+                                <td>{{ $program->price }}</td>
+                                <td><img src="{{ asset('images/' . $program->photo_speaker) }}" height="50" width="50"></td>
                                 <td>
                                     <a href="{{ route('program.edit', $program->id) }}" class="btn btn-warning btn-sm"><i
                                             class="fas fa-edit"></i></a>

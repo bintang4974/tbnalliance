@@ -50,10 +50,27 @@ class ProgramController extends Controller
             'place' => 'required',
             'speaker' => 'required',
             'poster' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'position' => 'required',
+            'transport' => 'required',
+            'hotel_name' => 'required',
+            'ticket_type' => 'required',
+            'price' => 'required',
+            'photo_speaker' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $imageName = time() . '.' . $request->poster->extension();
+        // $poster = $request->file('poster');
+        // $filename1 = time() . '_1.' . $poster->getClientOriginalExtension();
+        // $poster->move(public_path('uploads/poster'), $filename1);
+
+        // $photo_speaker = $request->file('photo_speaker');
+        // $filename2 = time() . '_2.' . $photo_speaker->getClientOriginalExtension();
+        // $photo_speaker->move(public_path('uploads/photo_speaker'), $filename2);
+
+        $imageName = time() . '_1' . $request->poster->extension();
         $request->poster->move(public_path('images'), $imageName);
+
+        $photoName = time() . '_2' . $request->photo_speaker->extension();
+        $request->photo_speaker->move(public_path('images'), $photoName);
 
         Program::create([
             'name' => $request->name,
@@ -62,6 +79,12 @@ class ProgramController extends Controller
             'place' => $request->place,
             'speaker' => $request->speaker,
             'poster' => $imageName,
+            'position' => $request->position,
+            'transport' => $request->transport,
+            'hotel_name' => $request->hotel_name,
+            'ticket_type' => $request->ticket_type,
+            'price' => $request->price,
+            'photo_speaker' => $photoName,
         ]);
 
         return redirect()->route('program.index')->with('success', 'Speaker berhasil ditambahkan.');

@@ -33,7 +33,10 @@
                     </div>
                     <div class="form-group">
                         <label>Content</label>
-                        <textarea name="content" class="form-control"></textarea>
+                        {{-- <div id="editor">
+                            <p>This is some sample content.</p>
+                        </div> --}}
+                        <textarea name="content" id="editor"></textarea>
                         @error('content')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror

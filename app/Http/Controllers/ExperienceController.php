@@ -8,101 +8,63 @@ use Illuminate\Http\Request;
 
 class ExperienceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $title = "Experience";
-
-        $experience = Experience::all();
-        return view('experience.index', compact('title', 'experience'));
+        $experiences = Experience::all();
+        return view('experience.index', compact('title', 'experiences'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $title = "Create Experience";
-        $participant = Participant::all();
-
-        return view('experience.create', compact('title', 'participant'));
+        $participants = Participant::all();
+        return view('experience.create', compact('title', 'participants'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
+        // Validate the incoming request data
         $request->validate([
             'desc' => 'required',
             'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'participant_id' => 'required',
+            'participant_id' => 'required|exists:participants,id', // Make sure participant_id exists in the participants table
         ]);
 
+        // Process the image upload
         $imageName = time() . '.' . $request->picture->extension();
         $request->picture->move(public_path('images'), $imageName);
 
+        // Create a new Experience model instance and save it to the database
         Experience::create([
             'desc' => $request->desc,
             'picture' => $imageName,
             'participant_id' => $request->participant_id,
         ]);
 
-        return redirect()->route('experience.index')->with('success', 'Speaker berhasil ditambahkan.');
+        // Redirect back to the index page with a success message
+        return redirect()->route('experience.index')->with('success', 'Experience successfully added.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $title = "Edit Experience";
         $experience = Experience::find($id);
-        $participant = Participant::all();
-
-        return view('experience.edit', compact('title', 'experience', 'participant'));
+        $participants = Participant::all();
+        return view('experience.edit', compact('title', 'experience', 'participants'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
+        // Validate the incoming request data
         $request->validate([
             'desc' => 'required',
-            'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'participant_id' => 'required',
+            'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'participant_id' => 'required|exists:participants,id',
         ]);
 
         $experience = Experience::find($id);
-        $imageName = $experience->poster;
+        $imageName = $experience->picture;
 
         if ($request->hasFile('picture')) {
             $imageName = time() . '.' . $request->picture->extension();
@@ -115,15 +77,9 @@ class ExperienceController extends Controller
             'participant_id' => $request->participant_id,
         ]);
 
-        return redirect()->route('experience.index')->with('success', 'Speaker berhasil diperbarui.');
+        return redirect()->route('experience.index')->with('success', 'Experience successfully updated.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $experience = Experience::find($id);
@@ -134,6 +90,6 @@ class ExperienceController extends Controller
         }
         $experience->delete();
 
-        return redirect()->route('experience.index')->with('success', 'experience berhasil dihapus.');
+        return redirect()->route('experience.index')->with('success', 'Experience successfully deleted.');
     }
 }

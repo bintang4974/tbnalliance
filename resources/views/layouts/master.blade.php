@@ -40,7 +40,7 @@
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-laptop-house"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">TBN Alliance</div>
+                <div class="sidebar-brand-text mx-3">TBN Indonesia</div>
             </a>
 
             <!-- Divider -->
@@ -199,7 +199,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; TBN Alliance 2024</span>
+                        <span>Copyright &copy; TBN Indonesia 2024</span>
                     </div>
                 </div>
             </footer>

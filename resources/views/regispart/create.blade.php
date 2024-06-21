@@ -42,7 +42,7 @@
                         <label class="form-label">Attendance</label>
                         <select name="attendance" class="form-control">
                             <option>-- Select One --</option>
-                            <option value="Hadir">hadir</option>
+                            <option value="Hadir">Hadir</option>
                             <option value="tidak">Tidak Hadir</option>
                         </select>
                     </div>
